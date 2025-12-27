@@ -1,4 +1,4 @@
-# SA-1-Experiment-1
+# SA-1
 
 ## AIM
 Create a scatter plot between cylinder vs Co2Emission (green color)
