@@ -1,22 +1,17 @@
-# SA-1
+# Experiment - 1
 
 ## AIM
 Create a scatter plot between cylinder vs Co2Emission (green color)
 
 ## Algorithim
-### Step - 1
 Import required libraries and load the dataset using read_csv(), then display initial records.
 
-### Step - 2
 Select relevant columns (CYLINDERS, ENGINESIZE, FUELCONSUMPTION_COMB, CO2EMISSIONS) for analysis.
 
-### Step - 3
 Preview the selected data to confirm columns.
 
-### Step - 4
 Create a scatter plot by taking CYLINDERS as the x-axis and CO2EMISSIONS as the y-axis.
 
-### Step - 5
 Display the scatter plot with appropriate labels and title to visualize the relationship.
 
 ## PROGRAM
@@ -87,3 +82,230 @@ Selected Columns:
 
 ## Result
 Thus the python program was able to create a scatter plot between cylinder vs Co2Emission (green color)
+
+# Experiment - 2
+
+## AIM
+Using scatter plot compare data cylinder vs Co2Emission and Enginesize Vs Co2Emission using different colors
+
+## Algorithim
+1. Create a new figure for plotting using `plt.figure()`.
+
+2. Plot a scatter graph of `CYLINDERS` vs `CO2EMISSIONS` with a label.
+
+3. Plot another scatter graph of `ENGINESIZE` vs `CO2EMISSIONS` on the same figure with a label.
+
+4. Add title, axis labels, and legend for comparison clarity.
+
+5. Display the combined scatter plot using `plt.show()`.
+
+## Program
+```
+plt.figure(figsize=(7,5))
+plt.scatter(data['CYLINDERS'], data['CO2EMISSIONS'], color='blue', label='Cylinders')
+plt.scatter(data['ENGINESIZE'], data['CO2EMISSIONS'], color='red', label='Engine Size')
+plt.title('Comparison: Cylinders vs Engine Size (CO2 Emission)')
+plt.xlabel('Value')
+plt.ylabel('CO2 Emission')
+plt.legend()
+plt.show()
+```
+
+## Output
+<img width="845" height="586" alt="image" src="https://github.com/user-attachments/assets/77e9d069-1ffa-43ee-adf2-cdd7843e4f0a" />
+
+## Result
+Thus, the program was successfully able to use scatter plot to compare data  cylinder vs Co2Emission and Enginesize Vs Co2Emission using different colors
+
+# Experiment - 3
+
+## Aim
+Using scatter plot compare data   cylinder vs Co2Emission and Enginesize Vs Co2Emission and FuelConsumption_comb Co2Emission using different colors
+
+## Algorithim
+1. Initialize a plot figure of defined size using `plt.figure()`.
+2. Plot scatter graphs for three feature relationships with `CO2EMISSIONS` (`CYLINDERS`, `ENGINESIZE`, `FUELCONSUMPTION_COMB`) using different colors.
+3. Label each scatter plot using `label` to distinguish features.
+4. Add plot title, axis labels, and legend for clarity.
+5. Display the plot with `plt.show()` to compare all three features visually.
+
+## Program
+```
+plt.figure(figsize=(7,5))
+plt.scatter(data['CYLINDERS'], data['CO2EMISSIONS'], color='green', label='Cylinders')
+plt.scatter(data['ENGINESIZE'], data['CO2EMISSIONS'], color='blue', label='Engine Size')
+plt.scatter(data['FUELCONSUMPTION_COMB'], data['CO2EMISSIONS'], color='red', label='FuelConsumption_comb')
+plt.title('Comparison of Multiple Features vs CO2 Emission')
+plt.xlabel('Value')
+plt.ylabel('CO2 Emission')
+plt.legend()
+plt.show()
+```
+
+## Output
+<img width="968" height="589" alt="image" src="https://github.com/user-attachments/assets/c919e9dd-f5f9-41e3-acd8-0e3e4658e81a" />
+
+## Result
+Thus the program was successfully able to Use scatter plot  to compare data   cylinder vs Co2Emission and Enginesize Vs Co2Emission and FuelConsumption_comb Co2Emission using different colors
+
+# Experiment - 4
+
+## Aim
+Train your model with independent variable as cylinder and dependent variable as Co2Emission
+
+## Algorithim
+1. Separate the dataset into input feature `CYLINDERS` (X1) and target variable `CO2EMISSIONS` (y).
+2. Split the data into training and testing sets using `train_test_split()`.
+3. Create a linear regression model and train it using the training data.
+4. Predict CO2 emission values for the test set using the trained model.
+5. Evaluate model performance using R2 score and print the accuracy.
+
+## Program
+```
+X1 = data[['CYLINDERS']]
+y = data['CO2EMISSIONS']
+X1_train, X1_test, y_train, y_test = train_test_split(X1, y, test_size=0.2, random_state=42)
+model1 = LinearRegression()
+model1.fit(X1_train, y_train)
+y_pred1 = model1.predict(X1_test)
+acc1 = r2_score(y_test, y_pred1)
+print("\nModel 1 (Cylinders vs CO2Emission) Accuracy (R2 Score):", round(acc1, 3))
+```
+## Output
+<img width="798" height="54" alt="image" src="https://github.com/user-attachments/assets/e59ef99e-bc55-41ab-a605-b9ecf0fb2a24" />
+
+## Result
+Thus, we were successfully able to train the model with independent variable as cylinder and dependent variable as Co2Emission
+
+# Experiment - 5
+
+## Aim
+Train another model with independent variable as FuelConsumption_comb and dependent variable as Co2Emission
+
+## Algorithim
+1. Select `FUELCONSUMPTION_COMB` as the input feature (X2) and keep `CO2EMISSIONS` as the target (y).
+2. Split the data into training and testing sets with `train_test_split()`.
+3. Train a linear regression model using the training data.
+4. Predict target values for the test data using the trained model.
+5. Calculate the R2 score to evaluate model accuracy and print the result.
+
+# Program
+```
+X2 = data[['FUELCONSUMPTION_COMB']]
+X2_train, X2_test, y_train, y_test = train_test_split(X2, y, test_size=0.2, random_state=42)
+model2 = LinearRegression()
+model2.fit(X2_train, y_train)
+y_pred2 = model2.predict(X2_test)
+acc2 = r2_score(y_test, y_pred2)
+print("Model 2 (FuelConsumption_comb vs CO2Emission) Accuracy (R2 Score):", round(acc2, 3))
+```
+
+## Output
+<img width="824" height="46" alt="image" src="https://github.com/user-attachments/assets/6670b859-9d80-4116-9d97-fe27233fed0c" />
+
+## Result
+Thus we were successfully able to train another model with independent variable as FuelConsumption_comb and dependent variable as Co2Emission
+
+# Experiment - 6
+
+## Aim
+Train your model on different train test ratio and train the models and note down their accuracies
+
+## Algorithim
+1. Define different test size ratios to compare model performance.
+2. For each ratio, split data into training and testing sets using `train_test_split()`.
+3. Train a linear regression model on each training set.
+4. Predict values on the respective test sets and compute R2 accuracy.
+5. Store and print the accuracy scores for each test ratio to observe performance changes.
+
+## Program
+```
+ratios = [0.1, 0.2, 0.3, 0.4]
+accuracy_scores = []
+for ratio in ratios:
+  X_train, X_test, y_train, y_test = train_test_split(X2, y, test_size=ratio, random_state=42)
+  model = LinearRegression()
+  model.fit(X_train, y_train)
+  y_pred = model.predict(X_test)
+  acc = r2_score(y_test, y_pred)
+  accuracy_scores.append((ratio, round(acc, 3)))
+print("\nDifferent Train-Test Split Accuracies (FuelConsumption_comb vs CO2Emission):")
+for r, a in accuracy_scores:
+  print(f"Test Size: {r}, R2 Score: {a}")
+```
+
+## Output
+<img width="910" height="151" alt="image" src="https://github.com/user-attachments/assets/ee8b9de1-5ff8-4154-9476-5f034a3dc9c6" />
+
+## Result
+Thus we were successfully able to train the model on different train test ratio and train the models and note down their accuracies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
